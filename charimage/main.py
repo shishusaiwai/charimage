@@ -1,16 +1,14 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 import argparse
-import sys
-import pprint
 
 from PIL import Image
 
-from libcharimage import make_imagestring, encode_charimage, decode_charimage
+from converter import make_imagestring
+from encoder import encode_charimage, decode_charimage
 
 
-
-if __name__ == '__main__':
+def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-w', dest='row_width', help="result row width", type=int, default=80)
     parser.add_argument('-e', dest='encode', help="encode the result", action='store_true')
@@ -18,7 +16,7 @@ if __name__ == '__main__':
     parser.add_argument('-v', dest='verbose', help="verbose output", action='store_true')
     parser.add_argument('image', help="<image_path/encoded_string>")
     args = parser.parse_args()
-    
+
     if args.decode:
         encoded_image = raw_input("encodedm image:")
         print decode_charimage(encoded_image, args.verbose)
@@ -29,3 +27,7 @@ if __name__ == '__main__':
             print encode_charimage(char_img)
         else:
             print char_img
+
+
+if __name__ == '__main__':
+    main()
