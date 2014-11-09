@@ -82,24 +82,30 @@ charimage
                                      **                                          *                            
                                        ****                 ***************  ****                             
                                            ***************                                                    
-                                                                                                    *         
+                                                                                                    *        
+
+
+
+安装
+====
+pip install charimage
                                                                                                             
 
 将简笔画变为字符图画
 ====================
 
-./charimage test/duck.jpg
+charimage test/duck.jpg
 
 
 将简笔画变为字符图画并编码为字符串
 ==================================
 
-./charimage -e test/duck.jpg
+charimage -e test/duck.jpg
 
 
 将编码字符串解码为字符图画
 ==========================
 
-./charimage -d
+charimage -d
 
 然后在提示输入时粘贴编码字符串
