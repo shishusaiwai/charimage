@@ -18,6 +18,15 @@ def compute_thredhold(img):
     return thredhold
 
 
+def compute_value(pixels):
+    sample_color = pixels[0]
+    if isinstance(sample_color, int):
+        value = sum(pixels) / len(pixels)
+    else:
+        value = sum([sum(p) for p in pixels]) / len(pixels)
+    return value
+
+
 def make_imagestring(img, row_width=80):
     char_img = ""
     width = img.size[0]
@@ -28,11 +37,8 @@ def make_imagestring(img, row_width=80):
 
     for h in range(0, img.size[1], step):
         for w in range(0, img.size[0], step):
-            color = img.getpixel((w, h))
-            if isinstance(color, int):
-                value = color
-            else:
-                value = sum(color)
+            pixels = [img.getpixel((w_index, h)) for w_index in range(w, w + step) if w_index < img.size[0]]
+            value = compute_value(pixels)
             if value < thredhold:
                 char_img += "*"
             else:

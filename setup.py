@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 setup(name='charimage',
-      version="0.1.1-1",
+      version="0.2",
       description="convert black-white image to string which can be displayed in terminal.",
       author="cong liu",
       author_email="shishusaiwai@vip.qq.com",
